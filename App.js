@@ -33,7 +33,7 @@ export default App;
 
 */
 
-/* vid 4: */
+/* vid 4:
 
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -44,8 +44,6 @@ class App extends React.Component {
         return (<h1>Hello People: {txt}</h1>);
     };
 }
-
-
 
 //add a propType: we can define what form our props should be in for example, string, number etc.
 App.propType = {
@@ -66,13 +64,44 @@ App.defaultProps = {
 // When this is done the component recieves the value as an object in terms of this.props - that can now be used by the
 // component, as we can see.
 ReactDOM.render(
-    <App  cat={5} />, 
+    <App cat={5} />, 
     document.getElementById('app') 
 );
 
 export default App;
 
+ */
 
 
+/* vid 5: */
 
+import React from 'react';
+// What is state: a collection of values managed by the component itself:
+class App extends React.Component {
+
+    //create a constructor: Which is the context for this in the component:
+    constructor(){
+        super();
+        this.state = { txt : 'this is the state text',
+                       cat : 0 
+        }
+    }
+
+    //change the state:
+    update(e){
+        this.setState({txt: this.state.txt + e.target.value})
+    }
+
+    render(){
+        let txt = this.props.txt;
+        return (
+            <div>
+                <input type="text" onChange={this.update.bind(this)} />    
+                <h1>Hello People: {this.state.txt}</h1>
+            </div>
+        );
+    };
+}
+
+export default App;
 

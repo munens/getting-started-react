@@ -8,5 +8,14 @@ import App from './App';
 ReactDom.render( <App/>, document.getElementById('app'));
 */
 
-/*vid 4: */
+/*vid 4: 
 import App from './App';
+*/
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+
+import App from './App';
+
+// render the page in which the entire application will be rendered.
+ReactDOM.render( <App/>, document.getElementById('app'));
