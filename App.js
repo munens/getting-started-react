@@ -73,7 +73,7 @@ export default App;
  */
 
 
-/* vid 5: */
+/* vid 5: 
 
 import React from 'react';
 // What is state: a collection of values managed by the component itself:
@@ -105,3 +105,61 @@ class App extends React.Component {
 
 export default App;
 
+ */
+
+/* vid 6: */
+
+import React from 'react';
+// What is state: a collection of values managed by the component itself:
+class App extends React.Component {
+
+    //create a constructor: Which is the context for this in the component:
+    constructor(){
+        super();
+        
+        this.state = { txt : 'this is the state text',
+                       cat : 0 }
+
+        // whenever we want to bind the value that a function in our component to say an input field, or the 
+        // value of something else then we do the following. You will remember that in the last video it is different.
+        this.update = this.update.bind(this);
+    }
+
+    //change the state:
+    update(e){
+        this.setState({txt: this.state.txt + e.target.value})
+    }
+
+    render(){
+        let txt = this.props.txt;
+        return (
+            <div>
+                {/* now we can pass on the state onto the Widget component. THis in the first case is simply the text,
+                    and in the second it is a method. */}
+                <Widget txt={this.state.txt} update={this.update} />
+
+                {/*Make more widgets!!*/}
+                <Widget txt={this.state.txt} update={this.update} />
+                <Widget txt={this.state.txt} update={this.update} />
+
+
+            </div>
+        );
+    };
+}
+
+//make a stateless Widget component to recieve the props passed on from the App component:
+const Widget = (props) => {
+    return (
+            <div>
+                {/* We have been passed the state from the App component as props that we can now use below.
+                    i).  we can call the method update that is in the App component (now whatever is written in 
+                         this input field will call the update() method in the App component) and 
+                    ii). we can use the txt that was passed down as props */}  
+                <input type="text" onChange={props.update} />    
+                <h1>Hello People: {props.txt}</h1>
+            </div>
+    );
+}
+
+export default App;
