@@ -1,4 +1,4 @@
-// export a config object, to develop our 
+// export a config object, to develop our app. what configuration should our application have?
 
 module.exports = {
     //main entry point
